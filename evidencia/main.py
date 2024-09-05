@@ -25,3 +25,27 @@ def registrar_usuario():
     if dni in [usuario['dni'] for usuario in usuarios.values()]:
         print("DNI ya registrado.")
         return
+    
+    #FLOR
+      # Registrar intento fallido
+            with open('log.txt', 'a') as file:
+                file.write(f"Intento fallido para el usuario {nombre_usuario} el {aritmetica.obtener_fecha_hora()}\n")
+           
+            if intentos == 4:
+                print("Usuario bloqueado.")
+                break
+
+
+def olvido_contrasena():
+    print("Función no implementada.")
+    pass
+
+
+def menu_principal():
+    while True:
+        print("\n--- Menú Principal ---")
+        print("1. Iniciar Sesión")
+        print("2. Registrar Usuario")
+        print("3. Salir")
+        print("4. Olvidé la contraseña")
+
