@@ -1,3 +1,17 @@
+import aritmetica
+
+
+def test_sumar():
+    assert aritmetica.sumar(1.123, 2.456) == 3.58
+    assert aritmetica.sumar(-1, -2) == -3.00
+    assert aritmetica.sumar(0, 0) == 0.00
+
+
+def test_restar():
+    assert aritmetica.restar(5.55, 2.22) == 3.33
+    assert aritmetica.restar(-1, 1) == -2.00
+    assert aritmetica.restar(0, 0) == 0.00
+
 #FLOR
 def test_promedio_n():
     assert aritmetica.promedio_n(1, 2, 3, 4) == 2.50
