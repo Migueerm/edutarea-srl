@@ -25,7 +25,41 @@ def registrar_usuario():
     if dni in [usuario['dni'] for usuario in usuarios.values()]:
         print("DNI ya registrado.")
         return
-    
+  correo = input("Correo: ")
+    fecha_nacimiento = input("Fecha de nacimiento (YYYY-MM-DD): ")
+
+
+    nombre_usuario = input("Nombre de usuario: ")
+    if len(nombre_usuario) < 6 or len(nombre_usuario) > 12 or nombre_usuario in usuarios:
+        print("El nombre de usuario debe tener entre 6 y 12 caracteres y ser único.")
+        return
+
+
+    clave = input("Clave: ")
+    if not validar_clave(clave):
+        print("La clave no cumple con los requisitos de seguridad. Debe poseer al menos 8 caracteres. Usar al menos una minúscula, una mayúscula, un número y un caracter especial")
+        return
+
+
+    # CAPTCHA
+    while True:
+        operacion = random.choice([aritmetica.sumar, aritmetica.restar, aritmetica.multiplicar, aritmetica.dividir])
+        a = random.randint(1, 10)
+        b = random.randint(1, 10)
+        resultado = operacion(a, b)
+       
+        if isinstance(resultado, float):
+            captcha = float(input(f"Resuelve el CAPTCHA: {a} {operacion.__name__} {b} = "))
+            if captcha == resultado:
+                print("CAPTCHA correcto. Usuario registrado.")
+                break
+            else:
+                print("CAPTCHA incorrecto. Inténtalo nuevamente o presiona 'q' para salir.")
+                if input().lower() == 'q':
+                    return
+        else:
+            print("Operación inválida. Inténtalo de nuevo.")
+
     #FLOR
       # Registrar intento fallido
             with open('log.txt', 'a') as file:
