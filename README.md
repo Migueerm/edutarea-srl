@@ -1,4 +1,4 @@
-# edutarea-srl
+# EduTarea SRL
 
 **Integrantes**
 
