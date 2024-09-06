@@ -5,6 +5,16 @@ def sumar(a, b):
 def restar(a, b):
     return round(a - b, 2)
 
+def dividir(a, b):
+    try:
+        return round(a / b, 2)
+    except ZeroDivisionError:
+        return "Error: División por cero"
+
+
+def multiplicar(a, b):
+    return round(a * b, 2)
+
 #FLOR
 def obtener_fecha_hora():
     from datetime import datetime
