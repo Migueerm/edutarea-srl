@@ -14,6 +14,9 @@ def dividir(a, b):
 
 def multiplicar(a, b):
     return round(a * b, 2)
+    
+def sumar_n(*args):
+    return round(sum(args), 2)
 
 #FLOR
 def obtener_fecha_hora():
