@@ -81,5 +81,22 @@ def menu_principal():
         print("1. Iniciar Sesión")
         print("2. Registrar Usuario")
         print("3. Salir")
-        print("4. Olvidé la contraseña")
+        print("4. Olvidé la contraseña") 
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+            iniciar_sesion()
+        elif opcion == "2":
+            registrar_usuario()
+        elif opcion == "3":
+            print("Saliendo...")
+            break
+        elif opcion == "4":
+            olvido_contrasena()
+        else:
+            print("Opción no válida. Inténtelo de nuevo.")
+
+if __name__ == "__main__":
+    menu_principal()
+
 
