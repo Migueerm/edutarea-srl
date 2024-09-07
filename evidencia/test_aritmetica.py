@@ -12,6 +12,18 @@ def test_restar():
     assert aritmetica.restar(-1, 1) == -2.00
     assert aritmetica.restar(0, 0) == 0.00
 
+def test_dividir():
+    assert aritmetica.dividir(10, 2) == 5.00
+    assert aritmetica.dividir(5, 2) == 2.50
+    assert aritmetica.dividir(5, 0) == "Error: División por cero"
+
+
+def test_multiplicar():
+    assert aritmetica.multiplicar(2.5, 4) == 10.00
+    assert aritmetica.multiplicar(0, 4) == 0.00
+    assert aritmetica.multiplicar(-3, 3) == -9.00
+
+
 #FLOR
 def test_promedio_n():
     assert aritmetica.promedio_n(1, 2, 3, 4) == 2.50
