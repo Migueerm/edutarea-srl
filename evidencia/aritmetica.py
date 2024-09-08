@@ -18,6 +18,11 @@ def multiplicar(a, b):
 def sumar_n(*args):
     return round(sum(args), 2)
 
+def promedio_n(*args):
+    if len(args) == 0:
+        return 0
+    return round(sum(args) / len(args), 2)
+
 #FLOR
 def obtener_fecha_hora():
     from datetime import datetime
