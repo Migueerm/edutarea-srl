@@ -23,6 +23,10 @@ def test_multiplicar():
     assert aritmetica.multiplicar(0, 4) == 0.00
     assert aritmetica.multiplicar(-3, 3) == -9.00
 
+def test_sumar_n():
+    assert aritmetica.sumar_n(1, 2, 3) == 6.00
+    assert aritmetica.sumar_n() == 0.00
+    assert aritmetica.sumar_n(-1, -2, -3) == -6.00
 
 #FLOR
 def test_promedio_n():
