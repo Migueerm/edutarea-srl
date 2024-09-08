@@ -59,7 +59,46 @@ def registrar_usuario():
                     return
         else:
             print("Operación inválida. Inténtalo de nuevo.")
+            
+  usuarios[nombre_usuario] = {
+        'nombre': nombre,
+        'apellido': apellido,
+        'dni': dni,
+        'correo': correo,
+        'fecha_nacimiento': fecha_nacimiento,
+        'clave': clave
+    }
+   
+    print(f"Usuario {nombre_usuario} registrado exitosamente.")
+   
+    # Guardar en archivo de texto
+    with open('usuariosCreados.txt', 'a') as file:
+        file.write(f"Usuario creado: {nombre_usuario}, DNI: {dni}, Fecha de creación: {aritmetica.obtener_fecha_hora()}\n")
 
+
+def iniciar_sesion():
+    nombre_usuario = input("Nombre de usuario: ")
+    if nombre_usuario not in usuarios:
+        print("Usuario no encontrado.")
+        return
+   
+    intentos = 0
+    while intentos < 4:
+        clave = input("Clave: ")
+        if usuarios[nombre_usuario]['clave'] == clave:
+            print(f"Bienvenido {usuarios[nombre_usuario]['nombre']}.")
+           
+            # Guardar en archivo de texto
+            with open('ingresos.txt', 'a') as file:
+                file.write(f"Usuario: {nombre_usuario} ingresó el {aritmetica.obtener_fecha_hora()}\n")
+            return
+       
+        else:
+            intentos += 1
+            print(f"Clave incorrecta. Intento {intentos} de 4.")
+
+            
+            
     #FLOR
       # Registrar intento fallido
             with open('log.txt', 'a') as file:
