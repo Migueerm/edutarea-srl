@@ -22,8 +22,7 @@ def promedio_n(*args):
     if len(args) == 0:
         return 0
     return round(sum(args) / len(args), 2)
-
-#FLOR
+    
 def obtener_fecha_hora():
     from datetime import datetime
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
