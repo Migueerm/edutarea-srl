@@ -28,62 +28,11 @@ def test_sumar_n():
     assert aritmetica.sumar_n() == 0.00
     assert aritmetica.sumar_n(-1, -2, -3) == -6.00
 
-#FLOR
+
 def test_promedio_n():
     assert aritmetica.promedio_n(1, 2, 3, 4) == 2.50
     assert aritmetica.promedio_n(5) == 5.00
     assert aritmetica.promedio_n() == 0.00
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 if __name__ == "__main__":
     test_sumar()
