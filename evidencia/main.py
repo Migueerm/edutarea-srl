@@ -98,8 +98,6 @@ def iniciar_sesion():
             print(f"Clave incorrecta. Intento {intentos} de 4.")
 
             
-            
-    #FLOR
       # Registrar intento fallido
             with open('log.txt', 'a') as file:
                 file.write(f"Intento fallido para el usuario {nombre_usuario} el {aritmetica.obtener_fecha_hora()}\n")
