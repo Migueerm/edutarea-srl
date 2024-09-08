@@ -10,7 +10,7 @@
 | Carlota Olmedo      | 41711170  | carlota_olmedo@hotmail.com| https://github.com/caolmedo
 | Guadalupe Mendoza   | 45934026  | despontinguadalupe@gmail.com |https://github.com/Guadamendoza/SolucionesPracticas 
 
-**Acceso al documento**: https://docs.google.com/document/d/1HBbKnpZKu7OGHchEQCvZZ0spJUapiImHA_sHksqoFFk/edit
+**Acceso al documento**: https://docs.google.com/document/d/1Fw-lIJrUs7D48Jj7ESrykbT-LgaB_OP8/edit?usp=sharing&ouid=105815117545153336322&rtpof=true&sd=true 
 
 **Descripción del repositorio**
 
