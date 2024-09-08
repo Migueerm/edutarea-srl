@@ -29,6 +29,7 @@ Este código permite registrar nuevos usuarios, iniciar sesión, y verificar con
 **menu_principal():** Muestra el menú principal con opciones para iniciar sesión, registrar usuario, salir o recuperar la contraseña.
 
 ***aritmetica.py***
+
 Este código contiene funciones  para operaciones matemáticas y manejo de fecha y hora. Las funciones son:
 
 **sumar(a, b):** Suma dos números y devuelve el resultado redondeado a dos decimales.
@@ -46,6 +47,7 @@ Este código contiene funciones  para operaciones matemáticas y manejo de fecha
 **obtener_fecha_hora():** Devuelve la fecha y hora actual en formato "YYYY-MM-DD HH:MM:SS".
 
 ***test_aritmética.py***
+
 Este código lo utilizamos para comprobar que las funciones del módulo aritmética funcionan correctamente.
 
 **test_sumar():** Prueba la función sumar(a,b) para casos de suma (números positivos, negativos y ceros).
