@@ -14,7 +14,7 @@
 
 **Descripción del repositorio**
 
-El repositorio de EduTarea SRL contiene una carpeta con el nombre “Evidencia” donde se encuentran los archivos sobre los cuales estuvimos trabajando.
+El repositorio de EduTarea SRL contiene una carpeta con el nombre “Evidencia1” donde se encuentran los archivos sobre los cuales estuvimos trabajando.
 
 ***main.py:***
  
