@@ -3,8 +3,8 @@
 SELECT * from materia `Dias`
 
 UPDATE estudiante
-SET Correo_electronico = 'ignaciomendoza@gmail.com'
-WHERE Nombre_Apellido = 'Ignacio Mendoza';
+SET Correo_electronico = 'florenciamendoza@gmail.com'
+WHERE Nombre_Apellido = 'Florencia Mendoza';
 
 INSERT INTO estudiante (Nombre_Apellido, Fecha_nacimiento, Edad, Correo_electronico, Telefono)
 VALUES ('Ignacio Lopez', '2002-04-18', 22, 'iglopez@gmail.com', '5551234567');
