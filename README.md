@@ -63,6 +63,50 @@ Este código lo utilizamos para comprobar que las funciones del módulo aritmét
 **test_promedio_n():** Comprueba que la función promedio_n(*args) calcule correctamente el promedio de diferentes números y que devuelva 0 cuando no haya argumentos.
 
 
+Se creó una aplicación en Python que implementa un sistema de gestión de usuarios y accesos, cumpliendo con la consigna de crear las clases Usuario y Acceso, donde un usuario puede tener múltiples accesos registrados, y cada acceso está asociado a un usuario.
+
+**Funcionalidades del sistema:**
+**Clases Usuario y Acceso:**
+
+La clase Usuario tiene atributos como id, username, password, y email.
+La clase Acceso incluye atributos como id, fechaIngreso, fechaSalida, y usuarioLogueado.
+
+**Menú Principal:** El programa ofrece un menú interactivo que permite realizar las siguientes acciones:
+
+         1- CRUD de Usuarios:
+Agregar usuario: permite crear nuevos usuarios y almacenarlos.
+Modificar usuario: permite actualizar el correo electrónico o la contraseña de un usuario existente.
+Eliminar usuario: elimina usuarios de la base de datos, ya sea mediante username o email.
+Buscar usuario: permite buscar usuarios por su username o email y mostrar sus detalles. Si no se encuentra, se muestra un mensaje informando que el usuario no existe.
+Mostrar todos los usuarios: muestra una lista de todos los usuarios registrados.
+
+        2- Salir del programa.
+        3- Ingresar al sistema: el usuario puede acceder proporcionando su username y password. Si las credenciales son correctas, el sistema permite al usuario ingresar y registrar un acceso, además de ofrecer la opción de volver al menú principal o salir de la aplicación.
+
+**Gestión de Archivos:**
+Los usuarios se almacenan en un archivo binario llamado usuarios.ispc.
+Cada vez que un usuario accede al sistema, se registra en un archivo binario accesos.ispc el objeto Acceso correspondiente, incluyendo el usuarioLogueado y las fechas de ingreso y salida.
+Si un intento de acceso falla (por credenciales incorrectas), se deja un registro detallado en un archivo de texto llamado logs.txt, que incluye la fecha y hora del intento fallido, junto con el username y la password ingresados.
+
+La aplicación sigue el paradigma de Programación Orientada a Objetos (POO) para gestionar los usuarios y accesos, y permite mantener un control adecuado sobre los datos mediante la lectura y escritura en archivos binarios y de texto.
+
+
+Para ejecutar y probar el programa hay que hacerlo desde alguna app que corra el código Python, como puede ser Visual Studio Code, y una vez ahí se desarrolla el menú inicial en donde podemos hacer las distintas acciones del menú.
+Es necesario instalar algunos componentes adicionales para ejecutar correctamente el programa:
+Python 3.x
+MySQL
+Paquete mysql-connector-python
+
+
+**Problemas e inconvenientes**
+Algunos problemas que encontramos:
+Conexión a la base de datos: Tuvimos problemas iniciales al configurar la conexión con MySQL debido a permisos y errores de autenticación. Solucionamos esto ajustando las credenciales y asegurando que el servidor MySQL estuviera corriendo.
+Dependencias: Al instalar mysql-connector-python, nos encontramos con algunas incompatibilidades de versiones de Python, que fueron resueltas actualizando el entorno virtual.
+
+
+
+
+
 
 
 
