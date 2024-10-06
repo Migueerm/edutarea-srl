@@ -258,3 +258,118 @@ def menu():
 # Ejecutar el menú
 if __name__ == "__main__":
     menu()
+
+# Funciones del menú
+def agregar_usuario():
+    username = input("Ingrese username: ")
+    email = input("Ingrese email: ")
+    password = input("Ingrese password: ")
+    nuevo_usuario = Usuario(None, username, password, email)
+    agregar_usuario_db(nuevo_usuario)
+
+
+
+
+def modificar_usuario():
+    username = input("Ingrese el username del usuario a modificar: ")
+    nuevo_email = input("Nuevo email: ")
+    nuevo_password = input("Nuevo password: ")
+    modificar_usuario_db(username, nuevo_email, nuevo_password)
+
+
+
+
+def eliminar_usuario():
+    username = input("Ingrese el username del usuario a eliminar: ")
+    eliminar_usuario_db(username)
+
+
+
+
+def buscar_usuario():
+    username = input("Ingrese username o email a buscar: ")
+    buscar_usuario_db(username)
+
+
+
+
+def mostrar_usuarios():
+    mostrar_usuarios_db()
+
+
+
+
+def ingresar_sistema():
+    username = input("Ingrese su username: ")
+    password = input("Ingrese su password: ")
+
+
+    conexion = conectar_base_datos()
+    if conexion:
+        try:
+            cursor = conexion.cursor()
+            sql = "SELECT id_usuario, username, password FROM usuario WHERE username = %s AND password = %s"
+            cursor.execute(sql, (username, password))
+            resultado = cursor.fetchone()
+
+
+            if resultado:
+                usuario = Usuario(*resultado)
+                print(f"Acceso concedido. Bienvenido, {usuario.username}.")
+                registrar_acceso_db(usuario)
+            else:
+                print("Credenciales incorrectas.")
+                registrar_intento_fallido(username, password)
+        except mysql.connector.Error as err:
+            print(f"Error al ingresar: {err}")
+        finally:
+            cursor.close()
+            conexion.close()
+
+
+
+
+# Menú principal
+def menu():
+    while True:
+        print("\n--- Menú Principal ---")
+        print("1. Agregar Usuario")
+        print("2. Modificar Usuario")
+        print("3. Eliminar Usuario")
+        print("4. Buscar Usuario")
+        print("5. Mostrar todos los Usuarios")
+        print("6. Ingresar al Sistema")
+        print("7. Salir")
+
+
+        opcion = input("Seleccione una opción: ")
+
+
+        if opcion == "1":
+            agregar_usuario()
+        elif opcion == "2":
+            modificar_usuario()
+        elif opcion == "3":
+            eliminar_usuario()
+        elif opcion == "4":
+            buscar_usuario()
+        elif opcion == "5":
+            mostrar_usuarios()
+        elif opcion == "6":
+            ingresar_sistema()
+        elif opcion == "7":
+            print("Saliendo del programa.")
+            break
+        else:
+            print("Opción no válida. Intente de nuevo.")
+
+
+
+
+# Ejecutar el menú
+if __name__ == "__main__":
+    menu()
+
+
+
+
