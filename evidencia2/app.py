@@ -18,8 +18,7 @@ def conectar_base_datos():
     except mysql.connector.Error as err:
         print(f"Error: {err}")
         return None
-
-
+        
 # Clase Usuario
 class Usuario:
     def __init__(self, user_id, username, password, email):
@@ -27,6 +26,7 @@ class Usuario:
         self.username = username
         self.password = password
         self.email = email
+
 
     def __repr__(self):
         return f"ID: {self.id}, Username: {self.username}, Email: {self.email}"
@@ -40,11 +40,14 @@ class Acceso:
         self.fecha_salida = None
         self.usuario_logueado = usuario_logueado
 
+
     def registrar_salida(self):
         self.fecha_salida = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+
     def __repr__(self):
         return f"Acceso ID: {self.id}, Usuario: {self.usuario_logueado.username}, Ingreso: {self.fecha_ingreso}, Salida: {self.fecha_salida}"
+
 
 
 # Funciones para interactuar con la base de datos
