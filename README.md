@@ -73,15 +73,15 @@ La clase Acceso incluye atributos como id, fechaIngreso, fechaSalida, y usuarioL
 
 **Menú Principal:** El programa ofrece un menú interactivo que permite realizar las siguientes acciones:
 
-         1- CRUD de Usuarios:
+1- CRUD de Usuarios:
 Agregar usuario: permite crear nuevos usuarios y almacenarlos.
 Modificar usuario: permite actualizar el correo electrónico o la contraseña de un usuario existente.
 Eliminar usuario: elimina usuarios de la base de datos, ya sea mediante username o email.
 Buscar usuario: permite buscar usuarios por su username o email y mostrar sus detalles. Si no se encuentra, se muestra un mensaje informando que el usuario no existe.
 Mostrar todos los usuarios: muestra una lista de todos los usuarios registrados.
 
-        2- Salir del programa.
-        3- Ingresar al sistema: el usuario puede acceder proporcionando su username y password. Si las credenciales son correctas, el sistema permite al usuario ingresar y registrar un acceso, además de ofrecer la opción de volver al menú principal o salir de la aplicación.
+2- Salir del programa.
+3- Ingresar al sistema: el usuario puede acceder proporcionando su username y password. Si las credenciales son correctas, el sistema permite al usuario ingresar y registrar un acceso, además de ofrecer la opción de volver al menú principal o salir de la aplicación.
 
 **Gestión de Archivos:**
 Los usuarios se almacenan en un archivo binario llamado usuarios.ispc.
