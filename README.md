@@ -81,7 +81,7 @@ Buscar usuario: permite buscar usuarios por su username o email y mostrar sus de
 Mostrar todos los usuarios: muestra una lista de todos los usuarios registrados.
 
 2- Salir del programa.
-3- Ingresar al sistema: el usuario puede acceder proporcionando su username y password. Si las credenciales son correctas, el sistema permite al usuario ingresar y registrar un acceso, además de ofrecer la opción de volver al menú principal o salir de la aplicación.
+ 3- Ingresar al sistema: el usuario puede acceder proporcionando su username y password. Si las credenciales son correctas, el sistema permite al usuario ingresar y registrar un acceso, además de ofrecer la opción de volver al menú principal o salir de la aplicación.
 
 **Gestión de Archivos:**
 Los usuarios se almacenan en un archivo binario llamado usuarios.ispc.
@@ -99,6 +99,7 @@ Paquete mysql-connector-python
 
 
 **Problemas e inconvenientes**
+
 Algunos problemas que encontramos:
 Conexión a la base de datos: Tuvimos problemas iniciales al configurar la conexión con MySQL debido a permisos y errores de autenticación. Solucionamos esto ajustando las credenciales y asegurando que el servidor MySQL estuviera corriendo.
 Dependencias: Al instalar mysql-connector-python, nos encontramos con algunas incompatibilidades de versiones de Python, que fueron resueltas actualizando el entorno virtual.
