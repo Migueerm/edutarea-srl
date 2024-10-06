@@ -81,9 +81,11 @@ Buscar usuario: permite buscar usuarios por su username o email y mostrar sus de
 Mostrar todos los usuarios: muestra una lista de todos los usuarios registrados.
 
 2- Salir del programa.
- 3- Ingresar al sistema: el usuario puede acceder proporcionando su username y password. Si las credenciales son correctas, el sistema permite al usuario ingresar y registrar un acceso, además de ofrecer la opción de volver al menú principal o salir de la aplicación.
+
+3- Ingresar al sistema: el usuario puede acceder proporcionando su username y password. Si las credenciales son correctas, el sistema permite al usuario ingresar y registrar un acceso, además de ofrecer la opción de volver al menú principal o salir de la aplicación.
 
 **Gestión de Archivos:**
+
 Los usuarios se almacenan en un archivo binario llamado usuarios.ispc.
 Cada vez que un usuario accede al sistema, se registra en un archivo binario accesos.ispc el objeto Acceso correspondiente, incluyendo el usuarioLogueado y las fechas de ingreso y salida.
 Si un intento de acceso falla (por credenciales incorrectas), se deja un registro detallado en un archivo de texto llamado logs.txt, que incluye la fecha y hora del intento fallido, junto con el username y la password ingresados.
