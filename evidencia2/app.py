@@ -1,18 +1,23 @@
-import pickle
+import mysql.connector
 from datetime import datetime
 
+
 # db_config.py
-#usar para conectar a la base de datos. La contraseña debe ser reemplazadas :)
-
-def get_db_connection():
-    import mysql.connector
-    return mysql.connector.connect(
-        host="3306",
-        user="root",
-        password="Aasx76tcy_2791",
-        database="edutareas"
-    )
-
+#usar para conectar a la base de datos. La contraseña y database debe ser reemplazadas por la propia :)
+def conectar_base_datos():
+    try:
+        conexion = mysql.connector.connect(
+            host="127.0.0.1",
+            user="root",
+            password="CONTRASEÑA",
+            database="evidencia2"
+        )
+        if conexion.is_connected():
+            print("Conexión exitosa a la base de datos.")
+            return conexion
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        return None
 
 
 # Clase Usuario
@@ -23,11 +28,8 @@ class Usuario:
         self.password = password
         self.email = email
 
-
     def __repr__(self):
         return f"ID: {self.id}, Username: {self.username}, Email: {self.email}"
-
-
 
 
 # Clase Acceso
@@ -38,140 +40,183 @@ class Acceso:
         self.fecha_salida = None
         self.usuario_logueado = usuario_logueado
 
-
     def registrar_salida(self):
         self.fecha_salida = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
 
     def __repr__(self):
         return f"Acceso ID: {self.id}, Usuario: {self.usuario_logueado.username}, Ingreso: {self.fecha_ingreso}, Salida: {self.fecha_salida}"
 
 
+# Funciones para interactuar con la base de datos
+
+def agregar_usuario_db(usuario):
+    conexion = conectar_base_datos()
+    if conexion:
+        try:
+            cursor = conexion.cursor()
+            sql = "INSERT INTO usuario (username, password, email) VALUES (%s, %s, %s)"
+            valores = (usuario.username, usuario.password, usuario.email)
+            cursor.execute(sql, valores)
+            conexion.commit()
+            print("Usuario agregado exitosamente en la base de datos.")
+        except mysql.connector.Error as err:
+            print(f"Error al insertar usuario: {err}")
+        finally:
+            cursor.close()
+            conexion.close()
 
 
-# Guardar y cargar datos usando archivos binarios
-def guardar_datos(archivo, datos):
-    with open(archivo, 'wb') as file:
-        pickle.dump(datos, file)
+def modificar_usuario_db(username, nuevo_email, nuevo_password):
+    conexion = conectar_base_datos()
+    if conexion:
+        try:
+            cursor = conexion.cursor()
+            sql = "UPDATE usuario SET email = %s, password = %s WHERE username = %s"
+            valores = (nuevo_email, nuevo_password, username)
+            cursor.execute(sql, valores)
+            conexion.commit()
+            print("Usuario modificado exitosamente.")
+        except mysql.connector.Error as err:
+            print(f"Error al modificar usuario: {err}")
+        finally:
+            cursor.close()
+            conexion.close()
 
 
+def eliminar_usuario_db(username):
+    conexion = conectar_base_datos()
+    if conexion:
+        try:
+            cursor = conexion.cursor()
+            sql = "DELETE FROM usuario WHERE username = %s"
+            cursor.execute(sql, (username,))
+            conexion.commit()
+            print("Usuario eliminado exitosamente.")
+        except mysql.connector.Error as err:
+            print(f"Error al eliminar usuario: {err}")
+        finally:
+            cursor.close()
+            conexion.close()
 
 
-def cargar_datos(archivo):
-    try:
-        with open(archivo, 'rb') as file:
-            return pickle.load(file)
-    except (FileNotFoundError, EOFError):
-        return []
+def buscar_usuario_db(username):
+    conexion = conectar_base_datos()
+    if conexion:
+        try:
+            cursor = conexion.cursor()
+            sql = "SELECT id_usuario, username, email FROM usuario WHERE username = %s OR email = %s"
+            cursor.execute(sql, (username, username))
+            resultado = cursor.fetchone()
+            if resultado:
+                usuario = Usuario(*resultado)
+                print(usuario)
+            else:
+                print("Usuario no encontrado.")
+        except mysql.connector.Error as err:
+            print(f"Error al buscar usuario: {err}")
+        finally:
+            cursor.close()
+            conexion.close()
 
 
+def mostrar_usuarios_db():
+    conexion = conectar_base_datos()
+    if conexion:
+        try:
+            cursor = conexion.cursor()
+            cursor.execute("SELECT id_usuario, username, email FROM usuario")
+            resultados = cursor.fetchall()
+            if resultados:
+                for resultado in resultados:
+                    usuario = Usuario(*resultado)
+                    print(usuario)
+            else:
+                print("No hay usuarios registrados.")
+        except mysql.connector.Error as err:
+            print(f"Error al mostrar usuarios: {err}")
+        finally:
+            cursor.close()
+            conexion.close()
 
 
-# Registrar intentos fallidos de acceso
+def registrar_acceso_db(usuario):
+    conexion = conectar_base_datos()
+    if conexion:
+        try:
+            cursor = conexion.cursor()
+            sql = "INSERT INTO acceso (fecha_ingreso, usuario_logueado) VALUES (%s, %s)"
+            fecha_ingreso = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            valores = (fecha_ingreso, usuario.username)
+            cursor.execute(sql, valores)
+            conexion.commit()
+            print(f"Acceso registrado para el usuario {usuario.username}.")
+        except mysql.connector.Error as err:
+            print(f"Error al registrar acceso: {err}")
+        finally:
+            cursor.close()
+            conexion.close()
+
+
 def registrar_intento_fallido(username, password):
     with open('logs.txt', 'a') as log_file:
         fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         log_file.write(f"{fecha} - Intento fallido con Username: {username}, Password: {password}\n")
 
 
-
-
-# Cargar usuarios y accesos
-usuarios = cargar_datos('usuarios.ispc')
-accesos = cargar_datos('accesos.ispc')
-
-
-
-
-# Agregar un nuevo usuario
+# Funciones del menú
 def agregar_usuario():
-    user_id = len(usuarios) + 1
     username = input("Ingrese username: ")
     email = input("Ingrese email: ")
     password = input("Ingrese password: ")
+    nuevo_usuario = Usuario(None, username, password, email)
+    agregar_usuario_db(nuevo_usuario)
 
 
-    # Crear y guardar el usuario
-    nuevo_usuario = Usuario(user_id, username, password, email)
-    usuarios.append(nuevo_usuario)
-    guardar_datos('usuarios.ispc', usuarios)
-    print("Usuario agregado exitosamente.")
-
-
-
-
-# Modificar un usuario
 def modificar_usuario():
     username = input("Ingrese el username del usuario a modificar: ")
-    for usuario in usuarios:
-        if usuario.username == username:
-            nuevo_email = input("Nuevo email: ")
-            nuevo_password = input("Nuevo password: ")
-            usuario.email = nuevo_email
-            usuario.password = nuevo_password
-            guardar_datos('usuarios.ispc', usuarios)
-            print("Usuario modificado exitosamente.")
-            return
-    print("Usuario no encontrado.")
+    nuevo_email = input("Nuevo email: ")
+    nuevo_password = input("Nuevo password: ")
+    modificar_usuario_db(username, nuevo_email, nuevo_password)
 
 
-
-
-# Eliminar un usuario
 def eliminar_usuario():
     username = input("Ingrese el username del usuario a eliminar: ")
-    for usuario in usuarios:
-        if usuario.username == username:
-            usuarios.remove(usuario)
-            guardar_datos('usuarios.ispc', usuarios)
-            print("Usuario eliminado exitosamente.")
-            return
-    print("Usuario no encontrado.")
+    eliminar_usuario_db(username)
 
 
-
-
-# Buscar usuario
 def buscar_usuario():
     username = input("Ingrese username o email a buscar: ")
-    for usuario in usuarios:
-        if usuario.username == username or usuario.email == username:
-            print(usuario)
-            return
-    print("Usuario no encontrado.")
+    buscar_usuario_db(username)
 
 
-
-
-# Mostrar todos los usuarios
 def mostrar_usuarios():
-    if usuarios:
-        for usuario in usuarios:
-            print(usuario)
-    else:
-        print("No hay usuarios registrados.")
+    mostrar_usuarios_db()
 
 
-
-
-# Ingresar al sistema
 def ingresar_sistema():
     username = input("Ingrese su username: ")
     password = input("Ingrese su password: ")
 
+    conexion = conectar_base_datos()
+    if conexion:
+        try:
+            cursor = conexion.cursor()
+            sql = "SELECT id_usuario, username, password FROM usuario WHERE username = %s AND password = %s"
+            cursor.execute(sql, (username, password))
+            resultado = cursor.fetchone()
 
-    for usuario in usuarios:
-        if usuario.username == username and usuario.password == password:
-            print(f"Acceso concedido. Bienvenido, {usuario.username}.")
-            acceso_id = len(accesos) + 1
-            nuevo_acceso = Acceso(acceso_id, usuario)
-            accesos.append(nuevo_acceso)
-            guardar_datos('accesos.ispc', accesos)
-            return
-    print("Credenciales incorrectas.")
-    registrar_intento_fallido(username, password)
-
-
+            if resultado:
+                usuario = Usuario(*resultado)
+                print(f"Acceso concedido. Bienvenido, {usuario.username}.")
+                registrar_acceso_db(usuario)
+            else:
+                print("Credenciales incorrectas.")
+                registrar_intento_fallido(username, password)
+        except mysql.connector.Error as err:
+            print(f"Error al ingresar: {err}")
+        finally:
+            cursor.close()
+            conexion.close()
 
 
 # Menú principal
@@ -186,9 +231,7 @@ def menu():
         print("6. Ingresar al Sistema")
         print("7. Salir")
 
-
         opcion = input("Seleccione una opción: ")
-
 
         if opcion == "1":
             agregar_usuario()
@@ -204,20 +247,11 @@ def menu():
             ingresar_sistema()
         elif opcion == "7":
             print("Saliendo del programa.")
-            guardar_datos('usuarios.ispc', usuarios)
-            guardar_datos('accesos.ispc', accesos)
             break
         else:
             print("Opción no válida. Intente de nuevo.")
 
 
-
-
 # Ejecutar el menú
 if __name__ == "__main__":
     menu()
-
-
-
-
-
