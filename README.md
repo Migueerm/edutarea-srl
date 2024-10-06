@@ -66,12 +66,15 @@ Este código lo utilizamos para comprobar que las funciones del módulo aritmét
 Se creó una aplicación en Python que implementa un sistema de gestión de usuarios y accesos, cumpliendo con la consigna de crear las clases Usuario y Acceso, donde un usuario puede tener múltiples accesos registrados, y cada acceso está asociado a un usuario.
 
 **Funcionalidades del sistema:**
+
 **Clases Usuario y Acceso:**
 
 La clase Usuario tiene atributos como id, username, password, y email.
 La clase Acceso incluye atributos como id, fechaIngreso, fechaSalida, y usuarioLogueado.
 
-**Menú Principal:** El programa ofrece un menú interactivo que permite realizar las siguientes acciones:
+**Menú Principal:** 
+
+El programa ofrece un menú interactivo que permite realizar las siguientes acciones:
 
 1- CRUD de Usuarios:
 Agregar usuario: permite crear nuevos usuarios y almacenarlos.
