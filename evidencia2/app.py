@@ -1,9 +1,8 @@
 import mysql.connector
 from datetime import datetime
 
-
 # db_config.py
-#usar para conectar a la base de datos. La contraseña y database debe ser reemplazadas por la propia :)
+#usar para conectar a la base de datos. La contraseña y database debe ser reemplazadas  :)
 def conectar_base_datos():
     try:
         conexion = mysql.connector.connect(
@@ -18,7 +17,8 @@ def conectar_base_datos():
     except mysql.connector.Error as err:
         print(f"Error: {err}")
         return None
-        
+
+
 # Clase Usuario
 class Usuario:
     def __init__(self, user_id, username, password, email):
@@ -30,6 +30,7 @@ class Usuario:
 
     def __repr__(self):
         return f"ID: {self.id}, Username: {self.username}, Email: {self.email}"
+
 
 
 # Clase Acceso
