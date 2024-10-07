@@ -84,6 +84,76 @@ def modificar_usuario_db(username, nuevo_email, nuevo_password):
         finally:
             cursor.close()
             conexion.close()
+#FLOR
+def buscar_usuario_db(username):
+    conexion = conectar_base_datos()
+    if conexion:
+        try:
+            cursor = conexion.cursor()
+            sql = "SELECT id_usuario, username, email FROM usuario WHERE username = %s OR email = %s"
+            cursor.execute(sql, (username, username))
+            resultado = cursor.fetchone()
+            if resultado:
+                usuario = Usuario(*resultado)
+                print(usuario)
+            else:
+                print("Usuario no encontrado.")
+        except mysql.connector.Error as err:
+            print(f"Error al buscar usuario: {err}")
+        finally:
+            cursor.close()
+            conexion.close()
+
+
+
+
+def mostrar_usuarios_db():
+    conexion = conectar_base_datos()
+    if conexion:
+        try:
+            cursor = conexion.cursor()
+            sql = "SELECT id_usuario, username, password, email FROM usuario"
+            cursor.execute(sql)
+            resultados = cursor.fetchall()
+            if resultados:
+                for resultado in resultados:
+                    usuario = Usuario(*resultado)
+                    print(usuario)
+            else:
+                print("No hay usuarios registrados.")
+        except mysql.connector.Error as err:
+            print(f"Error al mostrar usuarios: {err}")
+        finally:
+            cursor.close()
+            conexion.close()
+
+
+
+
+def registrar_acceso_db(usuario):
+    conexion = conectar_base_datos()
+    if conexion:
+        try:
+            cursor = conexion.cursor()
+            sql = "INSERT INTO acceso (fecha_ingreso, usuario_logueado) VALUES (%s, %s)"
+            fecha_ingreso = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            valores = (fecha_ingreso, usuario.username)
+            cursor.execute(sql, valores)
+            conexion.commit()
+            print(f"Acceso registrado para el usuario {usuario.username}.")
+        except mysql.connector.Error as err:
+            print(f"Error al registrar acceso: {err}")
+        finally:
+            cursor.close()
+            conexion.close()
+
+
+
+
+def registrar_intento_fallido(username, password):
+    with open('logs.txt', 'a') as log_file:
+        fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        log_file.write(f"{fecha} - Intento fallido con Username: {username}, Password: {password}\n")
 
 
 def eliminar_usuario_db(username):
