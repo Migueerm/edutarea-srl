@@ -63,7 +63,7 @@ Este código lo utilizamos para comprobar que las funciones del módulo aritmét
 **test_promedio_n():** Comprueba que la función promedio_n(*args) calcule correctamente el promedio de diferentes números y que devuelva 0 cuando no haya argumentos.
 
 
-Se creó una aplicación en Python que implementa un sistema de gestión de usuarios y accesos, cumpliendo con la consigna de crear las clases Usuario y Acceso, donde un usuario puede tener múltiples accesos registrados, y cada acceso está asociado a un usuario.
+Dentro de la carpeta *Evidencia 2*, se creó una aplicación en Python que implementa un sistema de gestión de usuarios y accesos, cumpliendo con la consigna de crear las clases Usuario y Acceso, donde un usuario puede tener múltiples accesos registrados, y cada acceso está asociado a un usuario.
 
 **Funcionalidades del sistema:**
 
@@ -79,7 +79,7 @@ El programa ofrece un menú interactivo que permite realizar las siguientes acci
 1- CRUD de Usuarios:
 Agregar usuario: permite crear nuevos usuarios y almacenarlos.
 Modificar usuario: permite actualizar el correo electrónico o la contraseña de un usuario existente.
-Eliminar usuario: elimina usuarios de la base de datos, ya sea mediante username o email.
+Eliminar usuario: elimina usuarios, ya sea mediante username o email.
 Buscar usuario: permite buscar usuarios por su username o email y mostrar sus detalles. Si no se encuentra, se muestra un mensaje informando que el usuario no existe.
 Mostrar todos los usuarios: muestra una lista de todos los usuarios registrados.
 
