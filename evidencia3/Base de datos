@@ -1,1 +1,207 @@
+#Conexión base de datos
+import mysql.connector
+def conectar_base_datos():
+    try:
+        # Configuración de la conexión
+        connection = mysql.connector.connect(
+            user='root',
+            password='CONTRASEÑA',
+            host='127.0.0.1',
+            port=3306,
+            database='edutareas'
+        )
+
+
+        if connection.is_connected():
+            db_info = connection.get_server_info()
+            print(f"Conectado a MySQL Server versión {db_info}")
+            cursor = connection.cursor()
+            cursor.execute("SELECT DATABASE();")
+            record = cursor.fetchone()
+            print(f"Conectado a la base de datos: {record}")
+            return connection  # Devolver la conexión para usarla en otras funciones
+
+
+    except mysql.connector.Error as e:
+        print(f"Error al conectar a MySQL: {e}")
+        return None
+
+
+# CRUD
+# SELECT
+def obtener_materia():
+    conexion = conectar_base_datos()
+    if conexion:
+        cursor = conexion.cursor()
+        query = "SELECT * FROM materia"
+        cursor.execute(query)
+        resultados = cursor.fetchall()
+
+
+        print("Materias: ")
+        for fila in resultados:
+            print(fila)
+
+
+        cursor.close()
+        conexion.close()
+
+
+# UPDATE
+def actualizar_estudiante(correo, nombre_apellido):
+    conexion = conectar_base_datos()  # Corregir el nombre de la función
+    if conexion:
+        cursor = conexion.cursor()
+        query = "UPDATE estudiante SET Correo_electronico = %s WHERE Nombre_Apellido = %s"
+        valores = (correo, nombre_apellido)
+        cursor.execute(query, valores)
+        conexion.commit()
+
+
+        print(f"Se ha actualizado el correo de {nombre_apellido} a {correo}")
+
+
+        cursor.close()
+        conexion.close()
+
+
+#INSERT
+def agregar_estudiante(nombre_apellido, fecha_nacimiento, edad, correo, telefono):
+    conexion = conectar_base_datos()
+    if conexion:
+        cursor = conexion.cursor()
+        query = """
+        INSERT INTO estudiante (Nombre_Apellido, Fecha_nacimiento, Edad, Correo_electronico, Telefono)
+        VALUES (%s, %s, %s, %s, %s)
+        """
+        valores = (nombre_apellido, fecha_nacimiento, edad, correo, telefono)
+        cursor.execute(query, valores)
+        conexion.commit()
+
+
+        print(f"Estudiante {nombre_apellido} ha sido agregado correctamente.")
+
+
+        cursor.close()
+        conexion.close()
+
+
+#DELETE
+def borrar_curso(nombre_curso):
+    conexion = conectar_base_datos()
+    if conexion:
+        cursor = conexion.cursor()
+        query = "DELETE FROM curso WHERE Nombre_Curso = %s"
+        valores = (nombre_curso,)
+        cursor.execute(query, valores)
+        conexion.commit()
+
+
+        print(f"Curso {nombre_curso} ha sido eliminado correctamente.")
+
+
+        cursor.close()
+        conexion.close()
+
+
+#CONSULTAS COMPLEJAS
+
+
+#INNER JOIN
+def consultar_inner_join():
+    conexion = conectar_base_datos()
+    if conexion:
+        cursor = conexion.cursor()
+        query = """
+        SELECT *
+        FROM materia A
+        INNER JOIN profesor B
+        ON A.ID_Profesor = B.ID_Profesor
+        """
+        cursor.execute(query)
+        resultados = cursor.fetchall()
+
+
+        print("Resultado INNER JOIN entre materia y profesor:")
+        for fila in resultados:
+            print(fila)
+
+
+        cursor.close()
+        conexion.close()
+
+
+#LEFT JOIN
+def consulta_left_join():
+    conexion = conectar_base_datos()
+    if conexion:
+        cursor = conexion.cursor()
+        query = """
+        SELECT *
+        FROM inscripcion C
+        LEFT JOIN estudiante D
+        ON C.ID_Estudiante = D.ID_Estudiante
+        """
+        cursor.execute(query)
+        resultados = cursor.fetchall()
+
+
+        print("Resultado LEFT JOIN entre inscripcion y estudiante:")
+        for fila in resultados:
+            print(fila)
+
+
+        cursor.close()
+        conexion.close()
+
+
+#RIGHT JOIN
+def consulta_right_join():
+    conexion = conectar_base_datos()
+    if conexion:
+        cursor = conexion.cursor()
+        query = """
+        SELECT *
+        FROM curso_profesor E
+        RIGHT JOIN profesor B
+        ON E.ID_Profesor = B.ID_Profesor
+        """
+        cursor.execute(query)
+        resultados = cursor.fetchall()
+
+
+        print("Resultado RIGHT JOIN entre curso_profesor y profesor:")
+        for fila in resultados:
+            print(fila)
+
+
+        cursor.close()
+        conexion.close()
+
+
+#FULL JOIN
+def consulta_full_join():
+    conexion = conectar_base_datos()
+    if conexion:
+        cursor = conexion.cursor()
+        query = """
+        SELECT *
+        FROM curso_profesor F
+        LEFT JOIN usuario_logueado G ON F.id_usuario = G.id_usuario
+        UNION
+        SELECT *
+        FROM usuario F
+        RIGHT JOIN usuario_logueado G ON F.id_usuario = G.id_usuario
+        """
+        cursor.execute(query)
+        resultados = cursor.fetchall()
+       
+        print("Resultado FULL JOIN entre usuario y usuario_logueado(simulado):")
+        for fila in resultados:
+            print(fila)
+
+
+        cursor.close()
+        conexion.close()
+
 
