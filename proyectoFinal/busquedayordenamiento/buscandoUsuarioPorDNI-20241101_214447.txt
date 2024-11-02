@@ -1,0 +1,9 @@
+Usando búsqueda binaria por DNI.
+Intento 1: Comparando con DNI en posición 11: 55555555
+Buscando en la parte izquierda.
+Intento 2: Comparando con DNI en posición 5: 33333333
+Buscando en la parte derecha.
+Intento 3: Comparando con DNI en posición 8: 44444444
+Buscando en la parte izquierda.
+Intento 4: Comparando con DNI en posición 6: 41711170
+Usuario encontrado: colmedo, DNI: 41711170, Email: colmedo@hotmail.com

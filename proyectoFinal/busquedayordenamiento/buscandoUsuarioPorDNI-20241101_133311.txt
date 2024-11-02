@@ -1,0 +1,4 @@
+Buscar en la parte izquierda (DNI: 3636363 < 56789012)
+Buscar en la parte izquierda (DNI: 3636363 < 22222222)
+Buscar en la parte izquierda (DNI: 3636363 < 10101010)
+Usuario encontrado: gligorria, intentos: 4
