@@ -1,0 +1,5 @@
+Buscar en la parte izquierda (DNI: 3636366 < 56789012)
+Buscar en la parte izquierda (DNI: 3636366 < 22222222)
+Buscar en la parte izquierda (DNI: 3636366 < 10101010)
+Buscar en la parte derecha (DNI: 3636366 > 3636363)
+Usuario no encontrado

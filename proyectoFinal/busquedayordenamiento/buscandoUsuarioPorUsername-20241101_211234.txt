@@ -1,0 +1,6 @@
+Intento 1: Comparando con username en posición 10: usuario18
+Buscando en la parte izquierda.
+Intento 2: Comparando con username en posición 4: usuario12
+Buscando en la parte izquierda.
+Intento 3: Comparando con username en posición 1: migue1
+Usuario encontrado: migue1, DNI: 123456789, Email: mail1@example.com
