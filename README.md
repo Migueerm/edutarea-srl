@@ -118,21 +118,21 @@ La aplicación desarrollada en Python tiene como objetivo proporcionar una exper
 1. **Usuarios y Accesos de la Aplicación**
   •	Acceder al CRUD de los Usuarios en POO:
 
-    o	 Agregar un nuevo usuario: Permite registrar usuarios con datos específicos.
+    o	 Agregar un nuevo usuario: permite registrar usuarios con datos específicos.
    
-    o	 Modificar un usuario: Ofrece la opción de editar la información de un usuario existente.
+    o	 Modificar un usuario: ofrece la opción de editar la información de un usuario existente.
 
-    o	 Eliminar un usuario: Permite la eliminación de un usuario específico mediante su username o email.
+    o	 Eliminar un usuario: permite la eliminación de un usuario específico mediante su username o email.
 
-    o	 Volver al menú principal o al anterior: Regresa a la pantalla de inicio o al menú previo.
+    o	 Volver al menú principal o al anterior: regresa a la pantalla de inicio o al menú previo.
    
   •	Mostrar los datos de Accesos:
  
-    o	Mostrar los accesos: Visualiza los registros almacenados en accesos.ispc.
+    o	Mostrar los accesos: visualiza los registros almacenados en accesos.ispc.
     
-    o	Mostrar los logs de intentos fallidos: Presenta los registros de intentos de acceso fallidos desde logs.txt.
+    o	Mostrar los logs de intentos fallidos: presenta los registros de intentos de acceso fallidos desde logs.txt.
     
-    o	Volver al menú principal o al anterior: Ofrece la opción de regresar.
+    o	Volver al menú principal o al anterior: ofrece la opción de regresar.
     
 2. **Ordenamiento y Búsqueda de Usuarios**
   •	Ordenar los Usuarios:
@@ -177,7 +177,7 @@ La aplicación desarrollada en Python tiene como objetivo proporcionar una exper
    
   •	Permite al usuario seleccionar un año o un mes específico para analizar registros pluviales y visualizar los resultados.
  
-  •	Salir de la aplicación: Cierra el programa de forma segura.
+  •	Salir de la aplicación: cierra el programa de forma segura.
  
 6. **Salida de la Aplicación**
    
