@@ -1,0 +1,4 @@
+2024-11-01 11:08:32.257782 - Intento fallido: usuario1, Contraseña: clave1
+2024-11-01 11:15:01.455040 - Intento fallido: usuario1, Contraseña: clave1
+2024-11-01 20:32:29.823289 - Intento fallido: carlota, Contraseña: asdsa
+2024-11-01 21:21:46.425866 - Intento fallido: caolmedo, Contraseña: caolmedo1
