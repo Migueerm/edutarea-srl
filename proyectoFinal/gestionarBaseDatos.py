@@ -6,7 +6,7 @@ def conectar_base_datos():
     try:
         conexion = mysql.connector.connect(
             user='root',
-            password='Aasx76tcy_2791',
+            password='REEMPLAZAR',
             host='127.0.0.1',
             port=3306,
             database='edutareas'
