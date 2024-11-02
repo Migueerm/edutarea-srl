@@ -116,6 +116,7 @@ La aplicación desarrollada en Python tiene como objetivo proporcionar una exper
 
 **Introducción y funcionamiento principal:** la aplicación inicia con el archivo main.py, que, al ejecutarse, despliega un menú de bienvenida con las siguientes secciones y submenús:
 1. **Usuarios y Accesos de la Aplicación**
+   
   •	Acceder al CRUD de los Usuarios en POO:
 
     o	 Agregar un nuevo usuario: permite registrar usuarios con datos específicos.
