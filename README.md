@@ -116,40 +116,72 @@ La aplicación desarrollada en Python tiene como objetivo proporcionar una exper
 
 **Introducción y funcionamiento principal:** la aplicación inicia con el archivo main.py, que, al ejecutarse, despliega un menú de bienvenida con las siguientes secciones y submenús:
 1. **Usuarios y Accesos de la Aplicación**
- •	Acceder al CRUD de los Usuarios en POO:
-    o	Agregar un nuevo usuario: Permite registrar usuarios con datos específicos.
-    o	Modificar un usuario: Ofrece la opción de editar la información de un usuario existente.
-    o	Eliminar un usuario: Permite la eliminación de un usuario específico mediante su username o email.
-    o	Volver al menú principal o al anterior: Regresa a la pantalla de inicio o al menú previo.
- •	Mostrar los datos de Accesos:
+  •	Acceder al CRUD de los Usuarios en POO:
+
+    o	 Agregar un nuevo usuario: Permite registrar usuarios con datos específicos.
+   
+    o	 Modificar un usuario: Ofrece la opción de editar la información de un usuario existente.
+
+    o	 Eliminar un usuario: Permite la eliminación de un usuario específico mediante su username o email.
+
+    o	 Volver al menú principal o al anterior: Regresa a la pantalla de inicio o al menú previo.
+   
+  •	Mostrar los datos de Accesos:
+ 
     o	Mostrar los accesos: Visualiza los registros almacenados en accesos.ispc.
+    
     o	Mostrar los logs de intentos fallidos: Presenta los registros de intentos de acceso fallidos desde logs.txt.
+    
     o	Volver al menú principal o al anterior: Ofrece la opción de regresar.
+    
 2. **Ordenamiento y Búsqueda de Usuarios**
- •	Ordenar los Usuarios:
+  •	Ordenar los Usuarios:
+
     o	Ordenar la lista por username para mejorar la visualización y el acceso a la información.
- •	Buscar y Mostrar los Usuarios:
+   
+  •	Buscar y Mostrar los Usuarios:
+ 
     o	Búsqueda por DNI: presenta los detalles si el usuario existe o indica la ausencia del mismo.
+    
     o	Búsqueda por username: muestra los datos del usuario o un mensaje de no existencia.
+    
     o	Buscar por email: proporciona los datos relacionados o indica la falta de coincidencias.
- •	Mostrar todos los usuarios:
-    o	Despliega la lista de usuarios desde usuarios.ispc y usuariosOrdenadosPorUsername.ispc (si este archivo está disponible).
+    
+  •	Mostrar todos los usuarios:
+ 
+    o	Despliega la lista de usuarios desde usuarios.ispc y usuariosOrdenadosPorUsername.ispc 
+    
     o	Volver al menú principal o al anterior.
+    
 3. **Ingreso al Sistema**
- •	Autenticación: solicita username y password, validando los datos contra usuarios.ispc. Al ser exitosa, se notifica al usuario sobre el acceso al módulo de gestión de bases de datos.
+   
+  •	Autenticación: solicita username y password, validando los datos contra usuarios.ispc. Al ser exitosa, se notifica al usuario sobre el acceso al módulo de gestión de bases de datos.
+ 
 4. **Gestión de Base de Datos**
- •	Presenta un submenú con las consultas SQL previamente trabajadas, adaptado a las necesidades de la base de datos. Opciones:
+   
+  •	Presenta un submenú con las consultas SQL previamente trabajadas, adaptado a las necesidades de la base de datos. Opciones:
+ 
     o	"INNER JOIN entre material y profesor
+    
     o	"LEFT JOIN entre inscripción y estudiante
+    
     o	"RIGHT JOIN entre curso_profesor y profesor
+    
     o	“FULL JOIN entre usuario y usuario_logueado
- •	La sección permite personalizar y agregar más opciones según las consultas definidas.
- •	Volver al menú principal.
+    
+  •	La sección permite personalizar y agregar más opciones según las consultas definidas.
+ 
+  •	Volver al menú principal.
+ 
 5. **Análisis de Datos**
- •	Permite al usuario seleccionar un año o un mes específico para analizar registros pluviales y visualizar los resultados.
- •	Salir de la aplicación: Cierra el programa de forma segura.
+   
+  •	Permite al usuario seleccionar un año o un mes específico para analizar registros pluviales y visualizar los resultados.
+ 
+  •	Salir de la aplicación: Cierra el programa de forma segura.
+ 
 6. **Salida de la Aplicación**
- •	El menú finaliza la sesión del usuario y cierra la aplicación.
+   
+  •	El menú finaliza la sesión del usuario y cierra la aplicación.
 
 
 
