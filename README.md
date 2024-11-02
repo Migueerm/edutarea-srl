@@ -111,6 +111,7 @@ Dependencias: Al instalar mysql-connector-python, nos encontramos con algunas in
 
 
 **Producto final** 
+
 La aplicación desarrollada en Python tiene como objetivo proporcionar una experiencia de gestión de usuarios y accesos, junto con análisis de datos y consultas SQL, a través de un menú interactivo. A continuación, se describe el funcionamiento y las características principales de la aplicación:
 
 **Introducción y funcionamiento principal:** la aplicación inicia con el archivo main.py, que, al ejecutarse, despliega un menú de bienvenida con las siguientes secciones y submenús:
